@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply Open Day Munich 2025 - Customer Segmentation</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background: var(--bg-color);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .metric-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .metric-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .viz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .viz-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .viz-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .viz-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .segment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .segment-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .segment-card.cluster-0 {
+            border-left-color: #3498db;
+        }
+        
+        .segment-card.cluster-1 {
+            border-left-color: #e74c3c;
+        }
+        
+        .segment-card.cluster-2 {
+            border-left-color: #2ecc71;
+        }
+        
+        .segment-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .segment-persona {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .segment-stats {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .segment-stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .viz-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎯 Reply Open Day Munich 2025</h1>
+        <p>Advanced Customer Segmentation | End-to-End ML Pipeline</p>
+    </header>
+    
+    <div class="container">
+        <!-- Key Metrics Section -->
+        <section class="section">
+            <h2>📊 Project Highlights</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Dataset Size</h3>
+                    <div class="metric-value">541,909</div>
+                    <div class="metric-label">Raw transactions analyzed</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Data Quality</h3>
+                    <div class="metric-value">73.5%</div>
+                    <div class="metric-label">Quality transactions retained</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Customer Base</h3>
+                    <div class="metric-value">4,338</div>
+                    <div class="metric-label">Unique customers segmented</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Segments</h3>
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">Actionable customer clusters</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Customer Segments Section -->
+        <section class="section">
+            <h2>👥 Customer Segments Identified</h2>
+            <div class="segment-grid">
+                <div class="segment-card cluster-0">
+                    <h3>🔵 Cluster 0: Base Value Seekers</h3>
+                    <p class="segment-persona">Value-Conscious • Occasional • Standard AOV</p>
+                    <p>The broad foundation of the customer base with moderate spending patterns. Focus on retention and cross-sell opportunities.</p>
+                    <div class="segment-stats">
+                        <div class="segment-stat">
+                            <span>Customers:</span>
+                            <strong>4,095 (94.4%)</strong>
+                        </div>
+                        <div class="segment-stat">
+                            <span>Avg Spend:</span>
+                            <strong>£1,328</strong>
+                        </div>
+                        <div class="segment-stat">
+                            <span>Avg Frequency:</span>
+                            <strong>4.1 orders</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="segment-card cluster-1">
+                    <h3>🔴 Cluster 1: Enterprise Outlier</h3>
+                    <p class="segment-persona">High-Value • Frequent • Premium AOV</p>
+                    <p>Single extreme high-value customer (documented outlier). Represents enterprise/bulk purchase pattern requiring white-glove service.</p>
+                    <div class="segment-stats">
+                        <div class="segment-stat">
+                            <span>Customers:</span>
+                            <strong>1 (0.02%)</strong>
+                        </div>
+                        <div class="segment-stat">
+                            <span>Avg Spend:</span>
+                            <strong>£1.44M</strong>
+                        </div>
+                        <div class="segment-stat">
+                            <span>Avg Frequency:</span>
+                            <strong>1,441 orders</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="segment-card cluster-2">
+                    <h3>🟢 Cluster 2: Emerging Loyalists</h3>
+                    <p class="segment-persona">Value-Conscious • Occasional • Premium AOV</p>
+                    <p>Higher AOV customers with growth potential. Target for loyalty programs and premium product upsells.</p>
+                    <div class="segment-stats">
+                        <div class="segment-stat">
+                            <span>Customers:</span>
+                            <strong>242 (5.6%)</strong>
+                        </div>
+                        <div class="segment-stat">
+                            <span>Avg Spend:</span>
+                            <strong>£8,763</strong>
+                        </div>
+                        <div class="segment-stat">
+                            <span>Avg Frequency:</span>
+                            <strong>6.4 orders</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Visualizations Section -->
+        <section class="section">
+            <h2>📈 Key Visualizations</h2>
+            <div class="viz-grid">
+                <div class="viz-card">
+                    <h3>Model Selection: Elbow Analysis</h3>
+                    <img src="../elbow.png" alt="Elbow plot showing optimal k selection">
+                    <p style="margin-top: 1rem; color: #7f8c8d;">WCSS decreases sharply from k=2 to k=4, then flattens, indicating diminishing returns beyond k=5.</p>
+                </div>
+                
+                <div class="viz-card">
+                    <h3>Model Selection: Silhouette Scores</h3>
+                    <img src="../silhouette.png" alt="Silhouette score analysis">
+                    <p style="margin-top: 1rem; color: #7f8c8d;">Interpretability-aware heuristic selected k=3 to avoid micro-clusters while maintaining reasonable separation.</p>
+                </div>
+                
+                <div class="viz-card">
+                    <h3>Customer Segmentation: Spend vs Frequency</h3>
+                    <img src="../segments.png" alt="Customer segments scatter plot">
+                    <p style="margin-top: 1rem; color: #7f8c8d;">Clear separation between base customers, emerging loyalists, and the enterprise outlier.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technical Stack Section -->
+        <section class="section">
+            <h2>🛠️ Technology Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-badge">Python 3.x</span>
+                <span class="tech-badge">pandas</span>
+                <span class="tech-badge">NumPy</span>
+                <span class="tech-badge">scikit-learn</span>
+                <span class="tech-badge">Matplotlib</span>
+                <span class="tech-badge">Seaborn</span>
+                <span class="tech-badge">Jupyter Notebook</span>
+                <span class="tech-badge">K-Means Clustering</span>
+                <span class="tech-badge">Git</span>
+                <span class="tech-badge">GitHub Pages</span>
+            </div>
+        </section>
+        
+        <!-- Competencies Section -->
+        <section class="section">
+            <h2>💼 Demonstrated Competencies</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>🎯 Data Strategy</h3>
+                    <p>Business-first metrics design with KPI framework and stakeholder alignment.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>🔧 Feature Engineering</h3>
+                    <p>Robust data quality handling, winsorization, minimal imputation strategies.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>🤖 ML Modeling</h3>
+                    <p>Unsupervised learning with interpretability safeguards and heuristic selection.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>📊 Visualization</h3>
+                    <p>Professional charts and interactive storytelling for technical & business audiences.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>♻️ Reproducibility</h3>
+                    <p>Environment management, seed control, version tracking, and documentation.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>🌍 Bilingual Comm</h3>
+                    <p>Technical documentation in English and German for international stakeholders.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Explore the Full Project</h2>
+            <p style="margin-bottom: 2rem;">Production-ready notebook, cleaned datasets, personas, and complete documentation.</p>
+            <a href="https://github.com/pratheekdk9919/Reply-Open-Day-Munich-" class="btn" target="_blank">📁 View Repository</a>
+            <a href="https://github.com/pratheekdk9919/Reply-Open-Day-Munich-/blob/main/Replyopenday_merged_final.ipynb" class="btn" target="_blank">📓 Open Notebook</a>
+            <a href="https://github.com/pratheekdk9919/Reply-Open-Day-Munich-/blob/main/EXECUTIVE_SUMMARY.txt" class="btn" target="_blank">📄 Executive Summary</a>
+        </section>
+    </div>
+    
+    <footer>
+        <p><strong>Reply Open Day Munich 2025</strong> | Advanced Customer Segmentation Project</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Built with Python, scikit-learn, and modern ML practices</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="https://github.com/pratheekdk9919" style="color: white; text-decoration: none;">GitHub: @pratheekdk9919</a>
+        </p>
+    </footer>
+</body>
+</html>
