@@ -1,43 +1,24 @@
-# Python artifacts
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.so
-
-# Virtual environments
-.env/
-.venv/
-venv/
-ENV/
-
-# Jupyter checkpoints
-.ipynb_checkpoints/
-
-# Data & cache (keep source CSVs, ignore temp outputs if any appear later)
-*.tmp
-*.log
-
-# OS / Editor noise
+# OS / Editor
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Package build output
-build/
-dist/
-
-# VS Code settings (optional keep)
+*.tmp
+~$*
 .vscode/
 
-# Python packaging
-*.egg-info/
-.eggs/
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+.venv/
 
-# Coverage / test
-.coverage*
-htmlcov/
+# Data & artifacts (keep CSV/PNG if you want to regenerate instead)
+Online Retail.xlsx
+*.png
+*.csv
+personas.json
+requirements_generated.txt
 
-# Ignore large exports if generated later (uncomment when needed)
-# plots/
-# artifacts/
+# Office temp files
+~$*.docx
+~$*.xlsx
