@@ -1,0 +1,43 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Data & cache (keep source CSVs, ignore temp outputs if any appear later)
+*.tmp
+*.log
+
+# OS / Editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Package build output
+build/
+dist/
+
+# VS Code settings (optional keep)
+.vscode/
+
+# Python packaging
+*.egg-info/
+.eggs/
+
+# Coverage / test
+.coverage*
+htmlcov/
+
+# Ignore large exports if generated later (uncomment when needed)
+# plots/
+# artifacts/
